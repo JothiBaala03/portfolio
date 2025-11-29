@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jothi Baala — Web Developer & Freelancer</title>
+  <meta name="description" content="Portfolio of Jothi Baala — Web Developer. Clean, responsive, performance-focused websites."/>
+  <meta property="og:title" content="Jothi Baala — Web Developer" />
+  <meta property="og:description" content="I build clean, responsive, high-converting websites." />
+  <meta name="theme-color" content="#0D1B2A" />
+
+  <!--
+    IMPORTANT:
+    - Replace `assets/profile.jpg` with your real profile picture.
+    - Replace `assets/Jothi_Baala_Resume.pdf` with your resume PDF (same path or update link).
+    - Replace project placeholder URLs with the actual project links.
+  -->
+
+  <style>
+    /* =========================
+       Variables & base styles
+       ========================= */
+    :root{
+      --primary: #0D1B2A; /* Navy */
+      --secondary:#1B263B;
+      --accent: #E0A458; /* Gold */
+      --bg:#F8F9FA;
+      --radius: 14px;
+      --gap: 1rem;
+      --max-width: 1200px;
+      --glass: rgba(255,255,255,0.06);
+      --shadow: 0 8px 24px rgba(13,27,42,0.12);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:var(--bg);
+      color:var(--primary);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      scroll-behavior:smooth;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* =========================
+       Layout
+       ========================= */
+    .container{max-width:var(--max-width);margin:0 auto;padding:1rem}
+
+    header{
+      position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(248,249,250,0.6));backdrop-filter: blur(6px);
+      border-bottom:1px solid rgba(0,0,0,0.04);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:0.6rem 1rem}
+    .brand{display:flex;align-items:center;gap:0.6rem}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--secondary));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;box-shadow:var(--shadow)}
+    nav ul{display:flex;gap:1rem;align-items:center;margin:0;padding:0;list-style:none}
+    .cta{background:var(--accent);color:var(--primary);padding:0.5rem 0.9rem;border-radius:10px;font-weight:600}
+    .ghost{padding:0.4rem 0.7rem;border-radius:10px}
+
+    /* =========================
+       Hero
+       ========================= */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:2rem;align-items:center;padding:3rem 0}
+    .hero-left{padding-right:1rem}
+    .hi{font-size:0.95rem;color:var(--secondary);margin:0 0 6px}
+    h1{font-size:2.2rem;margin:0 0 0.5rem}
+    h2{font-size:1.05rem;color:var(--secondary);margin:0 0 1rem;font-weight:600}
+    .tagline{margin:1rem 0 1.5rem;color:var(--secondary)}
+    .hero-buttons{display:flex;gap:0.8rem}
+
+    .profile-card{background:white;border-radius:18px;padding:1rem;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;gap:0.8rem}
+    .profile-pic{width:180px;height:180px;border-radius:50%;overflow:hidden;display:inline-block;border:6px solid rgba(224,164,88,0.08)}
+    .profile-pic img{width:100%;height:100%;object-fit:cover}
+    .floating{transform-origin:center}
+
+    /* Floating icons */
+    .floating-icons{position:absolute;right:1rem;top:1rem;display:flex;flex-direction:column;gap:0.6rem}
+    .float-ico{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg, rgba(224,164,88,0.12), rgba(27,38,59,0.08));display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(11,20,30,0.06)}
+
+    /* =========================
+       Sections & cards
+       ========================= */
+    section{padding:2rem 0}
+    .section-title{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem}
+    .section-title h3{margin:0;font-size:1.1rem}
+    .grid{display:grid;gap:1rem}
+
+    /* Skills grid */
+    .skills-grid{grid-template-columns:repeat(3,1fr);}
+    .skill-card{background:white;padding:1rem;border-radius:12px;box-shadow:var(--shadow);display:flex;gap:0.75rem;align-items:center}
+    .skill-icon{width:48px;height:48px;border-radius:10px;background:linear-gradient(180deg,var(--primary),var(--secondary));display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+
+    /* Services */
+    .services{grid-template-columns:repeat(3,1fr)}
+    .service-card{background:white;padding:1rem;border-radius:12px;box-shadow:var(--shadow);min-height:120px}
+
+    /* Portfolio */
+    .portfolio-grid{grid-template-columns:repeat(3,1fr)}
+    .project-card{background:white;border-radius:12px;padding:0;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+    .screenshot-frame{height:320px;overflow:hidden;position:relative}
+    .screenshot-frame img{position:absolute;left:0;top:0;width:100%;height:auto}
+    .project-body{padding:0.9rem}
+    .view-btn{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(13,27,42,0.86);color:white;padding:0.6rem 0.9rem;border-radius:10px;opacity:0;transition:all 260ms ease}
+
+    /* CSS-only vertical auto-scroll on hover */
+    .project-card .screenshot-frame{
+      --img-h: 720px; /* default tall image height; fine to change per project */
+    }
+    .project-card .screenshot-frame img{
+      will-change:transform;
+      transition:transform 400ms linear;
+    }
+    /* on hover of project-card, animate image from top to bottom using keyframes */
+    .project-card:hover .screenshot-frame img,
+    .project-card:focus-within .screenshot-frame img{
+      animation: scroll-down 6s linear forwards;
+    }
+    .project-card:hover .view-btn{opacity:1}
+
+    @keyframes scroll-down{
+      0%{transform:translateY(0)}
+      100%{transform:translateY(calc(var(--img-h) * -0.4))}
+    }
+
+    /* Contact */
+    .contact-grid{grid-template-columns:1fr 360px;gap:1rem}
+    .contact-form{background:white;padding:1rem;border-radius:12px;box-shadow:var(--shadow)}
+    input,textarea{width:100%;padding:0.6rem;border-radius:8px;border:1px solid rgba(11,20,30,0.06);margin-top:0.5rem}
+
+    /* Footer */
+    footer{padding:1.5rem 0;background:transparent;border-top:1px solid rgba(0,0,0,0.04)}
+
+    /* Utilities */
+    .muted{color:var(--secondary)}
+    .center{text-align:center}
+
+    /* Responsive */
+    @media (max-width:1000px){
+      .hero{grid-template-columns:1fr 300px}
+      .skills-grid{grid-template-columns:repeat(2,1fr)}
+      .services{grid-template-columns:repeat(2,1fr)}
+      .portfolio-grid{grid-template-columns:repeat(2,1fr)}
+      .contact-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:700px){
+      .hero{grid-template-columns:1fr;gap:1rem}
+      .floating-icons{display:none}
+      .skills-grid{grid-template-columns:1fr}
+      .services{grid-template-columns:1fr}
+      .portfolio-grid{grid-template-columns:1fr}
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion:reduce){
+      *{animation:none!important;transition:none!important}
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">JB</div>
+        <div>
+          <div style="font-weight:700">Jothi Baala</div>
+          <div class="muted" style="font-size:0.85rem">Web Developer & Freelancer</div>
+        </div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a class="ghost" href="#about">About</a></li>
+          <li><a class="ghost" href="#portfolio">Portfolio</a></li>
+          <li><a class="ghost" href="#services">Services</a></li>
+          <li><a class="ghost" href="#contact">Contact</a></li>
+          <li><a class="cta" href="#contact">Hire Me</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-left">
+        <p class="hi">Hi there 👋</p>
+        <h1>Hi, I’m <strong>Jothi Baala</strong></h1>
+        <h2>Web Developer & Freelancer</h2>
+        <p class="tagline">I build clean, responsive, and high-converting websites that help businesses grow.</p>
+        <div class="hero-buttons">
+          <a class="cta" href="#contact">Hire Me</a>
+          <a class="ghost" href="assets/Jothi_Baala_Resume.pdf" download>Download Resume</a>
+        </div>
+      </div>
+
+      <aside class="profile-card" aria-label="Profile">
+        <div class="profile-pic floating" style="transform:translateY(0);">
+          <!-- Replace the placeholder image at assets/profile.jpg -->
+          <img src="assets/profile.jpg" alt="Profile picture of Jothi Baala">
+        </div>
+        <div style="text-align:center">
+          <div style="font-weight:700">Jothi Baala</div>
+          <div class="muted">Junior Web Developer (Freelance)</div>
+          <div class="muted" style="font-size:0.85rem;margin-top:6px">Sept 2023 — Dec 2025</div>
+        </div>
+      </aside>
+
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-title">
+        <h3>About</h3>
+      </div>
+      <div class="grid" style="grid-template-columns:1fr 360px;gap:1rem;align-items:start">
+        <div>
+          <p><strong>Short bio</strong></p>
+          <p class="muted">Passionate web developer focused on building modern, responsive and result-driven websites. Strong in UI/UX implementation, clean layouts and usability. I turn ideas into high-performing digital experiences and can handle front-end, back-end, UI/UX and deployment as a one-person development team.</p>
+
+          <h4 style="margin-top:1.25rem">Strengths & Passions</h4>
+          <ul>
+            <li>Problem solving through design</li>
+            <li>High-converting website development</li>
+            <li>Keeping websites fast, mobile-optimized, and clean</li>
+            <li>Helping brands grow online</li>
+          </ul>
+        </div>
+
+        <aside style="background:white;padding:1rem;border-radius:12px;box-shadow:var(--shadow)">
+          <h4>Education</h4>
+          <p style="margin:0.25rem 0"><strong>B.Com Computer Applications</strong><br>Bishop Heber College — 2019–2022</p>
+          <p style="margin:0.25rem 0"><strong>Web Designing & Development</strong><br>FITA Academy — 2023</p>
+
+          <a class="ghost" href="assets/Jothi_Baala_Resume.pdf" download style="display:inline-block;margin-top:0.75rem">Download Resume</a>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-title"><h3>Skills</h3></div>
+      <div class="grid skills-grid">
+        <!-- Grouped skills into cards -->
+        <div class="skill-card"><div class="skill-icon">5+</div><div>
+          <div style="font-weight:700">HTML5 & CSS3</div>
+          <div class="muted">Semantic markup, responsive layouts</div>
+        </div></div>
+
+        <div class="skill-card"><div class="skill-icon">JS</div><div>
+          <div style="font-weight:700">JavaScript & jQuery</div>
+          <div class="muted">DOM, interactions, form validation</div>
+        </div></div>
+
+        <div class="skill-card"><div class="skill-icon">WP</div><div>
+          <div style="font-weight:700">WordPress & Elementor</div>
+          <div class="muted">Custom themes & pagebuilders</div>
+        </div></div>
+
+        <div class="skill-card"><div class="skill-icon">PHP</div><div>
+          <div style="font-weight:700">PHP & MySQL</div>
+          <div class="muted">Forms, mailing, CRUD</div>
+        </div></div>
+
+        <div class="skill-card"><div class="skill-icon">GIT</div><div>
+          <div style="font-weight:700">Git & cPanel</div>
+          <div class="muted">Versioning & deployments</div>
+        </div></div>
+
+        <div class="skill-card"><div class="skill-icon">F</div><div>
+          <div style="font-weight:700">Figma & UI/UX</div>
+          <div class="muted">Prototyping & layouts</div>
+        </div></div>
+
+        <div class="skill-card"><div class="skill-icon">SEO</div><div>
+          <div style="font-weight:700">SEO & Performance</div>
+          <div class="muted">Optimization & accessibility basics</div>
+        </div></div>
+
+        <div class="skill-card"><div class="skill-icon">PS</div><div>
+          <div style="font-weight:700">Photoshop & React</div>
+          <div class="muted">Basic design & modern JS</div>
+        </div></div>
+
+        <div class="skill-card"><div class="skill-icon">Forms</div><div>
+          <div style="font-weight:700">PHPMailer & reCAPTCHA</div>
+          <div class="muted">Secure contact integrations</div>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="section-title"><h3>Services</h3></div>
+      <div class="grid services">
+        <div class="service-card"><h4>Website Design & Development</h4><p class="muted">Custom responsive websites tailored to your brand.</p></div>
+        <div class="service-card"><h4>WordPress Development</h4><p class="muted">Theme customization, plugins, and page building with Elementor.</p></div>
+        <div class="service-card"><h4>UI/UX Implementation</h4><p class="muted">Design-driven experiences focused on conversions.</p></div>
+        <div class="service-card"><h4>Landing Page Design</h4><p class="muted">High-converting landing pages & funnels.</p></div>
+        <div class="service-card"><h4>Custom Forms & Integrations</h4><p class="muted">Payment forms, multi-step flows, and third-party integrations.</p></div>
+        <div class="service-card"><h4>Website Speed Optimization</h4><p class="muted">Reduce load time and improve Core Web Vitals.</p></div>
+        <div class="service-card"><h4>Bug Fixing & Maintenance</h4><p class="muted">Ongoing site support and fixes.</p></div>
+        <div class="service-card"><h4>Custom Sliders & Lightbox Galleries</h4><p class="muted">Interactive media components for products and portfolios.</p></div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio">
+      <div class="section-title"><h3>Portfolio</h3></div>
+      <div class="grid portfolio-grid">
+        <!-- Example of project card. Duplicate for each project. -->
+
+        <!-- Project 1 -->
+        <article class="project-card">
+          <div class="screenshot-frame" style="--img-h:720px;">
+            <img src="assets/infinix360.jpg" alt="Infinix360.ae screenshot">
+            <a class="view-btn" href="https://infinix360.ae" target="_blank" rel="noopener">View Website</a>
+          </div>
+          <div class="project-body">
+            <div style="font-weight:700">Infinix360.ae</div>
+            <div class="muted">Modern corporate website</div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card">
+          <div class="screenshot-frame" style="--img-h:720px;">
+            <img src="assets/zeroinacademy.jpg" alt="ZeroinAcademy.com screenshot">
+            <a class="view-btn" href="https://zeroinacademy.com" target="_blank" rel="noopener">View Website</a>
+          </div>
+          <div class="project-body">
+            <div style="font-weight:700">ZeroinAcademy.com</div>
+            <div class="muted">Educational training academy</div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card">
+          <div class="screenshot-frame" style="--img-h:720px;">
+            <img src="assets/jumboinsurance.jpg" alt="JumboInsurance.ae screenshot">
+            <a class="view-btn" href="https://jumboinsurance.ae" target="_blank" rel="noopener">View Website</a>
+          </div>
+          <div class="project-body">
+            <div style="font-weight:700">JumboInsurance.ae</div>
+            <div class="muted">Lead-generation insurance site</div>
+          </div>
+        </article>
+
+        <!-- Additional project cards (placeholders) -->
+        <article class="project-card">
+          <div class="screenshot-frame" style="--img-h:720px;">
+            <img src="assets/batteryhouses.jpg" alt="BatteryHouses.com screenshot">
+            <a class="view-btn" href="#" target="_blank" rel="noopener">View Website</a>
+          </div>
+          <div class="project-body"><div style="font-weight:700">BatteryHouses.com</div><div class="muted">Battery product & service</div></div>
+        </article>
+
+        <article class="project-card">
+          <div class="screenshot-frame" style="--img-h:720px;">
+            <img src="assets/financialadvisor.jpg" alt="FinancialAdvisorInDubai.com screenshot">
+            <a class="view-btn" href="#" target="_blank" rel="noopener">View Website</a>
+          </div>
+          <div class="project-body"><div style="font-weight:700">FinancialAdvisorInDubai.com</div><div class="muted">Consultancy</div></div>
+        </article>
+
+        <article class="project-card">
+          <div class="screenshot-frame" style="--img-h:720px;">
+            <img src="assets/hildmedical.jpg" alt="HildMedical.com screenshot">
+            <a class="view-btn" href="#" target="_blank" rel="noopener">View Website</a>
+          </div>
+          <div class="project-body"><div style="font-weight:700">HildMedical.com</div><div class="muted">Medical & healthcare</div></div>
+        </article>
+
+        <!-- Add more project cards following the pattern above -->
+
+      </div>
+    </section>
+
+    <!-- FREELANCE AVAILABILITY -->
+    <section id="freelance">
+      <div style="background:linear-gradient(90deg, rgba(14,27,42,0.03), rgba(224,164,88,0.02));padding:1rem;border-radius:12px;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+        <div>
+          <div style="font-weight:700">Available for freelance projects</div>
+          <div class="muted">Let's work together and build something amazing.</div>
+        </div>
+        <div><a class="cta" href="#contact">Hire Me</a></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-title"><h3>Contact</h3></div>
+      <div class="grid contact-grid">
+        <form class="contact-form" id="contactForm" novalidate>
+          <label for="name">Name</label>
+          <input id="name" name="name" required />
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required />
+
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" />
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+
+          <div style="margin-top:0.6rem;display:flex;gap:0.6rem;align-items:center">
+            <button class="cta" type="submit">Send Message</button>
+            <div id="formStatus" class="muted" aria-live="polite"></div>
+          </div>
+        </form>
+
+        <aside style="background:white;padding:1rem;border-radius:12px;box-shadow:var(--shadow)">
+          <h4>Contact Details</h4>
+          <p style="margin:0.4rem 0"><strong>Email:</strong> <a href="mailto:jothibaala03@gmail.com">jothibaala03@gmail.com</a></p>
+          <p style="margin:0.4rem 0"><strong>Phone:</strong> <a href="tel:+918825696957">+91 88256 96957</a></p>
+          <p style="margin:0.4rem 0"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jothi-baala/" target="_blank" rel="noopener">linkedin.com/in/jothi-baala</a></p>
+
+          <div style="margin-top:1rem;" class="muted">Your details will be used only to contact you regarding projects.</div>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="container">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+      <div style="display:flex;gap:1rem;align-items:center">
+        <div style="font-weight:700">Jothi Baala</div>
+        <div class="muted">Web Developer & Freelancer</div>
+      </div>
+      <div class="muted">This website was built with AI tools by Jothi Baala</div>
+    </div>
+  </footer>
+
+  <script>
+    // Minimal JS: form validation + UX
+    (function(){
+      const form = document.getElementById('contactForm');
+      const status = document.getElementById('formStatus');
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        status.textContent = '';
+
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const message = form.message.value.trim();
+
+        if(!name || !email || !message){
+          status.textContent = 'Please fill the required fields.';
+          return;
+        }
+        if(!/^\S+@\S+\.\S+$/.test(email)){
+          status.textContent = 'Please provide a valid email.';
+          return;
+        }
+
+        // Simulate form send. Replace this block with real endpoint (Formspree, Netlify Functions, etc.)
+        status.textContent = 'Sending...';
+        setTimeout(()=>{
+          status.textContent = 'Thanks! Your message has been received. I will get back to you soon.';
+          form.reset();
+        }, 800);
+
+      });
+    })();
+  </script>
+</body>
+</html>
